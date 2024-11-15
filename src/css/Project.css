@@ -1,0 +1,367 @@
+.projectsContainer {
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  background-color: #343a40;
+  
+}
+.projects {
+  display: flex;
+  flex-direction: column;
+  padding-top: 120px;
+  height: 170vh; /* Full height of the viewport */
+  background-color: #343a40;
+  width: 100vw;
+  position: relative;
+  transition: width 0.5s ease;
+}
+
+.project {
+  padding: 20px 30px;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer; 
+  z-index: 1;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+}
+
+.projectTitle {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2em;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.project1:hover {
+  transform: scale(1.1) !important; 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2) !important; 
+  z-index: 6 !important;
+}
+
+.project2b:hover, .project3b:hover, .project4b:hover, .project5b:hover, .project6b:hover {
+  transform: scale(1.1) !important; 
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2) !important; 
+  opacity: 1 !important;
+  z-index: 6 !important;
+}
+
+.project3b:hover + .project3, .project4b:hover + .project4, .project6b:hover + .project6 {
+  transform: translateX(5%) scale(1.1);
+}
+
+.project2b:hover + .project2, .project5b:hover + .project5 {
+  transform: translateX(-5%) scale(1.1);
+}
+
+.project1 {
+  background-color: #2b7a78;
+  color: white;
+  width: 40vw;
+  max-width: 800px;
+  height: 40vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+.project2 {
+  background-size: cover; /* Ensure the image covers the entire element */
+  background-position: center; /* Center the image */
+  
+  background-color: #047470;
+  color: white;
+  width: 70vw;
+  max-width: 1200px;
+  height: 40vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position project2 absolutely */
+  top: 20vh; /* Adjust the top value to overlap project1 */
+  right: 0; /* Position it on the right side */
+}
+
+.project2b {
+  background-size: cover; /* Ensure the image covers the entire element */
+  background-position: center; /* Center the image */
+  
+  background-color: #047470;
+  color: white;
+  width: 70vw;
+  max-width: 1200px;
+  height: 40vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position project2 absolutely */
+  top: 20vh; /* Adjust the top value to overlap project1 */
+  right: 0; /* Position it on the right side */
+  z-index: 5;
+  opacity: 0;
+}
+
+.project3 {
+  background-size: cover; /* Ensure the image covers the entire element */
+  background-position: center; /* Center the image */
+  
+  background-color: rgb(10, 63, 63);
+  color: white;
+  width: 65vw;
+  max-width: 1000px;
+  height: 30vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position project3 absolutely */
+  top: 65vh; /* Position it below project2 */
+  left: 0; /* Position it on the left side */
+}
+
+.project3b {
+  background-size: cover; /* Ensure the image covers the entire element */
+  background-position: center; /* Center the image */
+  
+  background-color: rgb(10, 63, 63);
+  color: white;
+  width: 65vw;
+  max-width: 1000px;
+  height: 30vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position project3 absolutely */
+  top: 65vh; /* Position it below project2 */
+  left: 0; /* Position it on the left side */
+  z-index: 5;
+  opacity: 0;
+}
+
+.project4 {
+  background-color: rgb(145, 145, 145);
+  color: white;
+  width: 40vw;
+  max-width: 700px;
+  height: 30vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position project3 absolutely */
+  top: 102vh; /* Position it below project2 */
+  left: 0; /* Position it on the left side */
+}
+
+.project4b {
+  background-color: rgb(145, 145, 145);
+  color: white;
+  width: 40vw;
+  max-width: 700px;
+  height: 30vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position project3 absolutely */
+  top: 102vh; /* Position it below project2 */
+  left: 0; /* Position it on the left side */
+  z-index: 5;
+  opacity: 0;
+}
+
+.project5 {
+  background-color: rgb(53, 80, 80);
+  color: white;
+  width: 55vw;
+  max-width: 900px;
+  height: 30vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position project3 absolutely */
+  top: 110vh; /* Position it below project2 */
+  right: 0; /* Position it on the left side */
+}
+
+.project5b {
+  background-color: rgb(53, 80, 80);
+  color: white;
+  width: 55vw;
+  max-width: 900px;
+  height: 30vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position project3 absolutely */
+  top: 110vh; /* Position it below project2 */
+  right: 0; /* Position it on the left side */
+  z-index: 5;
+  opacity: 0;
+}
+
+.project6 {
+  background-color: rgb(19, 194, 194);
+  color: white;
+  width: 60vw;
+  max-width: 850px;
+  height: 30vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position project3 absolutely */
+  top: 140vh; /* Position it below project2 */
+  left: 0; /* Position it on the left side */
+}
+
+.project6b {
+  background-color: rgb(19, 194, 194);
+  color: white;
+  width: 60vw;
+  max-width: 850px;
+  height: 30vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position project3 absolutely */
+  top: 140vh; /* Position it below project2 */
+  left: 0; /* Position it on the left side */
+  z-index: 5;
+  opacity: 0;
+}
+
+.codeSnippet1 {
+  font-size: 1.5rem;
+  position: absolute; /* Position project3 absolutely */
+  top: 50vh; /* Position it below project2 */
+  left: 0px; /* Position it on the left side */
+  background-color: transparent;
+  color: #f8f8f2;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  opacity: 0.13;
+  user-select: none;
+  overflow: hidden; /* Hide overflow content */
+}
+
+.codeSnippet2 {
+  height: 40vh;
+  font-size: 1.5rem;
+  position: absolute; /* Position project3 absolutely */
+  top: 65vh; /* Position it below project2 */
+  right: 0px; /* Position it on the left side */
+  background-color: transparent;
+  color: #f8f8f2;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  opacity: 0.13;
+  user-select: none;
+  overflow: hidden; /* Hide overflow content */
+}
+
+.codeSnippet3 {
+  height: 40vh;
+  font-size: 1.5rem;
+  position: absolute; /* Position project3 absolutely */
+  top: 135vh; /* Position it below project2 */
+  right: 50px; /* Position it on the left side */
+  background-color: transparent;
+  color: #f8f8f2;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  opacity: 0.13;
+  user-select: none;
+  overflow: hidden; /* Hide overflow content */
+}
+
+.codeSnippet1 pre, .codeSnippet2 pre, .codeSnippet3 pre {
+  margin: 0;
+}
+
+.codeSnippet1 code, .codeSnippet2 code, .codeSnippet3 code {
+  display: block;
+  white-space: pre;
+}
+
+
+@media (min-width: 2000px) {
+  .projects {
+    width: 90vw;
+  }
+}
+@media (min-width: 2200px) {
+  .projects {
+    width: 80vw;
+  }
+}
+@media (min-width: 2400px) {
+  .projects {
+    width: 70vw;
+  }
+}
+@media (min-width: 2600px) {
+  .projects {
+    width: 65vw;
+  }
+}
+@media (min-width: 2800px) {
+  .projects {
+    width: 60vw;
+  }
+}
+@media (min-width: 3000px) {
+  .projects {
+    width: 55vw;
+  }
+}
+
+.project.slide-in {
+  /* opacity: 1; */
+  transform: translateX(0); /* Slide in to original position */
+  transition: transform .65s ease, opacity 0.5s ease, box-shadow 0.5s ease !important;
+}
+
+.leftSlide {
+  transform: translateX(-30%); /* Slide in from the left */
+}
+
+.leftSlide:hover {
+  transform: translateX(5%) scale(1.1) !important; /* Slide in from the left */
+}
+
+.rightSlide:hover {
+  transform: translateX(-5%) scale(1.1) !important; /* Slide in from the left */
+}
+
+.rightSlide{
+  transform: translateX(30%); /* Slide in from the right */
+}
+
+/* .disable-hover * {
+  pointer-events: none !important;
+} */
+/* .projectButtonsContainer {
+  padding-top: 20%;
+  flex: 1;
+  background-color: transparent; 
+  height: 65%; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: top; 
+  gap: 20px; 
+}
+
+.projectButton {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #2b7a78;
+  color: white;
+  padding: 20px 30px;
+  border: none;
+  border-radius: 8px; 
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 400px;
+  min-width: 200px;
+  width: 80%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.projectButton:hover {
+  background-color: #1d5c5a;
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); 
+}
+
+.projectContentContainer {
+  min-width: 500px;
+  max-width: 1100px;
+  flex: 1.5; 
+  background-color: rgba(255, 255, 255);
+  height: 65%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */

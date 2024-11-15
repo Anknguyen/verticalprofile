@@ -1,0 +1,228 @@
+.navContainer {
+    display: flex;
+    justify-content: space-between; /* Ensure space between nav items and rightDiv */
+    align-items: stretch; /* Stretch items to take full height */
+    width: 100%; /* Ensure it takes full width */
+    height: 120px;
+    position: fixed; /* Make the nav bar stick to the top */
+    top: 0; /* Position it at the top */
+    left: 0; /* Position it at the left edge */
+    z-index: 1000;
+    background-color: transparent; /* Set a background color */
+    transition: background-color 0.8s; /* Smooth transition for background color */
+  }
+
+  .navContainer.colored {
+    background-color: #333333;
+  }
+  
+  .navHome{
+    display: flex;
+    justify-content: center; /* Center the nav items */
+    align-items: center; /* Center vertically */
+    height: 120px; /* Set a fixed height for the nav */
+  }
+  
+  .navHomeButton {
+    width: 120px;
+    font-family: 'Montserrat', sans-serif;
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center the content vertically */
+    justify-content: center; /* Center the content horizontally */
+    height:stretch;
+    color: white;
+    border: none;
+    padding: 10px 40px;
+    text-decoration: none;
+    font-size: 22px;
+    cursor: pointer;
+    transition: color 0.2s, background-color 0.2s; /* Transition for text color and background color */
+    text-align: center; /* Center the text within the buttons */
+    flex: 1;
+    position: relative; /* Required for pseudo-element positioning */
+    background-color:transparent;
+    box-shadow: none; /* Ensure no box shadow is applied */
+  }
+  
+  .navHomeButton:hover {
+    color: black; /* Change text color on hover */
+    background-color: white;
+  }
+  
+  .rightDiv {
+    padding-right: 2vw;
+    padding-top: 0px;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center;
+    background-color: transparent;
+    color: white;
+    font-size: 35px;
+    font-weight: 500;
+    cursor: default;
+    transition: all 0.2s;
+    height: 120px;
+    gap: 20px;
+    padding-left: 40px;
+  }
+  
+  .rightNavHomeIcon {
+    text-decoration: none;
+    color: white;
+    transition:color 0.35s;
+  }
+  
+  .rightNavHomeIcon:hover {
+    color: black; /* Change color on hover */
+  }
+
+  .middleDiv{
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Center the nav items */
+    align-items: center; /* Center vertically */
+    height: 120px; /* Set a fixed height for the nav */
+  }
+
+  .navTitle{
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    opacity:0;
+    transform: translateY(-80px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+  .navTitle.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .no-style {
+    text-decoration: none;
+    transition: color 0.35s;
+    display: flex; /* Make the Link a flex container */
+    width: 100%; /* Make the Link take up the full width of the parent */
+    height: 100%; /* Make the Link take up the full height of the parent */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+}
+
+  .menuContainer {
+    position: fixed; /* Make it fixed to overlap other elements */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2b7a78;
+    display: flex;
+    flex-direction: column; /* Make it vertical */
+    justify-content: center; /* Center items vertically */
+    align-items: center; /* Center items horizontally */
+    z-index: 999; /* Ensure it overlaps other elements */
+    transition: background-color 0.7s ease; /* Smooth transition for color change */
+   }
+
+.menuItem {
+    text-decoration: none;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(82px, 2.5vw, 140px); /* Dynamically change font size */
+    transition: transform 1s, color 0.4s ease-out; /* Smooth transition for transform and color */
+}
+
+.menuCard {
+    margin-top: 2.5vh;
+    margin-bottom: 2.5vh;
+    text-decoration: none;
+    display: flex;
+    width: 100%;
+    background-color: transparent;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid white; /* Add a bottom border */
+}
+
+.menuHome {
+    padding-top: 120px;
+    justify-content: flex-start; /* Align items to the start (left) */
+}
+
+.menuHome .menuItem{
+    transform: translate(-20vw);
+}
+
+.menuHome:hover .menuItem {
+    color: black;
+    transform: translateX(-5vw);
+}
+
+.menuHome:hover + .menuContainer {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.menuProjects {
+    justify-content: flex-end; /* Center items */
+}
+
+.menuProjects .menuItem{
+    transform: translateX(20vw); /* Move items to the left */
+}
+
+.menuProjects:hover .menuItem {
+    color: black;
+    transform: translateX(5vw);
+}
+
+.menuContact {
+    justify-content: flex-start; /* Center items */
+}
+
+.menuContact .menuItem{
+    transform: translateX(-20vw); /* Move items to the right */
+}
+
+.menuContact:hover .menuItem {
+    color: black;
+    transform: translateX(-5vw);
+}
+
+.menuSkills {
+    justify-content: flex-end; /* Center items */
+    border-bottom:none;
+}
+
+.menuSkills .menuItem{
+    transform: translateX(20vw); /* Move items to the left */
+}
+
+.menuSkills:hover .menuItem {
+    color: black;
+    transform: translateX(5vw);
+}
+
+.menuContainer.colorHome {
+    /* background-color: rgb(206, 174, 149); */
+}
+
+.menuContainer.colorAbout {
+    /* background-color: rgb(168, 158, 147); */
+}
+
+.menuContainer.colorContact {
+    /* background-color: rgb(160, 123, 85); */
+}
+
+.menuContainer.colorSkills {
+    /* background-color: rgb(143, 131, 122); */
+}
+
+.innerMenu {
+    width:70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

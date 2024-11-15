@@ -1,0 +1,121 @@
+.parentContainer{
+    overflow: hidden;
+    background-color: #2b3d45;
+}
+.contactTitle{
+    font-size: 3em;
+    color: white;
+    text-align: center;
+    margin-bottom: 60px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contactContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    /* background-color: rgb(184, 184, 184); */
+    background-color: #2b3d45;
+    box-sizing: border-box;
+    padding: 100px;
+    position:relative;
+}
+
+.contactContainer h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contactContainer form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.contactContainer .inputRow {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.contactContainer .inputGroup {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+.contactContainer input[type="text"],
+.contactContainer input[type="email"],
+.contactContainer textarea {
+    width: 100%;
+    padding: 25px; /* Increase padding for larger input area */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1.1em; /* Increase font size */
+    font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
+}
+
+.contactContainer input[type="text"]:focus,
+.contactContainer input[type="email"]:focus,
+.contactContainer textarea:focus {
+    border-color: black;
+    outline: none;
+}
+
+
+.contactContainer .buttonContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.contactContainer button[type="submit"] {
+    padding: 15px 10px;
+    background-color: black;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.1s;
+    font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
+    width: 150px;
+    height: 60px;
+}
+
+.contactContainer button[type="submit"]:hover {
+    background-color: white;
+    color: black;
+}
+
+.bottomContactDiv {
+    margin-top: auto; /* Push the bottomContactDiv to the bottom */
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.botNavContactIcon {
+    display: inline-flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+    margin: 5px 20px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+}
+
+.botNavContactIcon svg {
+    margin-right: 10px; /* Add space between the icon and the text */
+}

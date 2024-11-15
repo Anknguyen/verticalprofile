@@ -1,0 +1,154 @@
+.parentContainer {
+    display: grid;
+    place-items: center; /* Center both horizontally and vertically */
+    height: 100vh; /* Full height of the viewport */
+    background: linear-gradient(128deg, #3aafa9 80%, #def2f1 80.1%); /* Adjust the gradient stops */
+    position: relative; /* Ensure the parent container has a positioning context */
+}
+
+.totalContainer {
+    position: relative; /* Establish positioning context */
+    background-color: #feffff;
+    z-index: 1; /* Ensure it sits above the parent container */
+    height: 65vh; /* Set a fixed height for the total container */
+    width: 80vw; /* Set a fixed width for the total container */
+    display: flex;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25); /* Add a shadow to the total container */
+}
+
+.aboutLeftContainer {
+    background-color: #feffff;
+    height: 100%; /* Full height of the total container */
+    width: 50%; /* Take up 60% of the total container */
+    display: flex;
+    flex-direction: column; /* Make it a flex container with column direction */
+    overflow: visible; /* Allow overflow to be visible */
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.aboutContainer {
+    background-color: #feffff;
+    height: 100%; /* Full height of the total container */
+    width: 50%; /* Take up 40% of the total container */
+    display: flex;
+    flex-direction: column; /* Make it a flex container with column direction */
+    overflow: visible; /* Allow overflow to be visible */
+}
+
+.myPicture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+    max-height: 70%;
+    min-height: 50%;
+    position: relative; /* Use relative positioning */
+    overflow: hidden; /* Hide overflow to see the scaled image */
+}
+
+.myPicture img {
+    width: auto; /* Maintain the aspect ratio */
+    height: 100%; /* Make the image take up the full height of the container */
+    object-fit: contain; /* Ensure the image maintains its aspect ratio */
+}
+
+.overflowContainer {
+    overflow-y: auto; /* Enable vertical scrolling */
+    flex-grow: 1; /* Allow it to grow and take up remaining space */
+    scrollbar-width: thin; /* Make the scrollbar thin for Firefox */
+    scrollbar-color: #3aafa9 transparent; /* Color of the scrollbar thumb and track */
+}
+
+/* Style the scrollbar for WebKit browsers */
+.overflowContainer::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+.overflowContainer::-webkit-scrollbar-track {
+    background: #def2f1; /* Make the scrollbar track match the theme */
+}
+
+.overflowContainer::-webkit-scrollbar-thumb {
+    background: #3aafa9; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners for the scrollbar thumb */
+}
+
+.overflowContainer::-webkit-scrollbar-thumb:hover {
+    background: #2b7a78; /* Darker color of the scrollbar thumb on hover */
+}
+
+.overflowContainer::-webkit-scrollbar-button {
+    background: #3aafa9; /* Color of the scrollbar buttons */
+    border-radius: 6px; /* Rounded corners for the scrollbar buttons */
+}
+
+.overflowContainer::-webkit-scrollbar-button:vertical:decrement {
+    background: #2b7a78; /* Color of the up button */
+}
+
+.overflowContainer::-webkit-scrollbar-button:vertical:increment {
+    background: #2b7a78; /* Color of the down button */
+}
+
+.pictureContainer {
+    position: absolute; /* Position the picture container absolutely */
+    top: 0; /* Position it at the top of the about container */
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center it horizontally and move it up by 50% of its height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    z-index: 2;
+    width: 150px; /* Set a fixed width */
+    height: 150px; /* Set a fixed height */
+    border-radius: 50%; /* Make it circular */
+}
+
+.textContainer {
+    font-size: 18px; /* Set font size for the text */
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 20px; /* Adjust this value to create space for the picture */
+}
+
+.headerContainer{
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 80px;
+    margin-left: 80px;
+    font-size: 30px; /* Set font size for the header */
+    font-weight: bold; /* Make the header bold */
+    margin-bottom: 10px; /* Space below the header */
+    
+}
+
+.bottomDiv{
+    padding-left: 2vw;
+    padding-top: 30px;
+    display: flex;
+    justify-content: center; /* Align items to the right */
+    align-items: center;
+    background-color: transparent;
+    color: black;
+    font-size: 35px;
+    font-weight: 500;
+    cursor: default;
+    transition: all 0.2s;
+    height: 120px;
+    gap: 50px;
+    
+}
+
+.botNavHomeIcon {
+    text-decoration: none;
+    color: #526D82;
+    transition:color 0.35s;
+  }
+  
+  .botNavHomeIcon:hover {
+    color: black; /* Change color on hover */
+  }
