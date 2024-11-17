@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import '../css/About.css';
@@ -7,6 +7,30 @@ import { Typewriter } from 'react-simple-typewriter';
 import projectImg1 from '../img/projectImg1.jpg';
 
 function About() {
+
+    const overflowRef = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+          if (overflowRef.current) {
+            const scrollTop = overflowRef.current.scrollTop;
+            const scrollHeight = overflowRef.current.scrollHeight - overflowRef.current.clientHeight;
+            const scrollPercentage = (scrollTop / scrollHeight) * 70;
+            document.querySelector('.scroll-bar').style.height = `${scrollPercentage}%`;
+          }
+        };
+    
+        const overlayElement = overflowRef.current;
+        if (overlayElement) {
+          overlayElement.addEventListener('scroll', handleScroll);
+        }
+    
+        return () => {
+          if (overlayElement) {
+            overlayElement.removeEventListener('scroll', handleScroll);
+          }
+        };
+      }, [overflowRef]);
 
     const { ref, inView } = useInView({
         triggerOnce: false, // Trigger the animation only once
@@ -36,7 +60,6 @@ function About() {
 
     return (
         <div className="parentContainer">
-
                 <motion.div
                     className="totalContainer"
                     ref={ref}
@@ -49,9 +72,6 @@ function About() {
                     <img className='myPicture' src={projectImg1} alt="Project Image" />
                 </div>
                 <div className="aboutContainer">
-                    {/* <div className="pictureContainer">
-                        <img src="path_to_your_image.jpg" alt="My Picture" />
-                    </div> */}
                     
                     <div className="headerContainer">
                     <Typewriter
@@ -65,14 +85,18 @@ function About() {
                             
                         />
                     </div>
-                    <div className="overflowContainer">
+                    
+                        <div className="scroll-bar"></div>
+                        <div className="scroll-bar-container"></div>
+                    
+                    <div className="overflowContainer" ref={overflowRef}>
                         <motion.div
                             className="textContainer"
                             initial="hidden"
                             animate={inView ? 'visible' : 'hidden'}
                             variants={textVariants}
                         >
-                            <h4><Typewriter
+                            {/* <h4><Typewriter
                                     words={["Passionate software developer"]}
                                     loop={1}
                                     cursor
@@ -80,9 +104,10 @@ function About() {
                                     typeSpeed={30}
                                     deleteSpeed={50}
                                     delaySpeed={1000}
-                            /></h4>
+                            /></h4> */}
+                            <h4>Passionate software developer</h4>
                             <p>I am a passionate software developer with a strong foundation in both frontend and backend coding. I have just recently graduated, and I’m excited to see where this road leads me.</p>
-                            <h4><Typewriter
+                            {/* <h4><Typewriter
                                     words={["Diverse skillset"]}
                                     loop={1}
                                     cursor
@@ -90,9 +115,10 @@ function About() {
                                     typeSpeed={40}
                                     deleteSpeed={50}
                                     delaySpeed={1000}
-                            /></h4>
+                            /></h4> */}
+                            <h4>Diverse skillset</h4>
                             <p>I have a diverse skill set that includes proficiency in Python, JavaScript, Java, and SQL. My journey into programming began when my parents introduced me to their work, where I discovered a fascination with how code can transform ideas into functional applications. </p>
-                            <h4><Typewriter
+                            {/* <h4><Typewriter
                                     words={["Improvement oriented"]}
                                     loop={1}
                                     cursor
@@ -100,9 +126,10 @@ function About() {
                                     typeSpeed={40}
                                     deleteSpeed={50}
                                     delaySpeed={1000}
-                            /></h4>
+                            /></h4> */}
+                            <h4>Improvement oriented</h4>
                             <p>Though I’m still early in my career, I’m always eager to learn and improve. I’m excited about opportunities where I can collaborate with experienced engineers, solve complex problems, and continue growing my technical skill set. My adaptability, attention to detail, and curiosity drive me to constantly seek new challenges and better solutions.</p>
-                            <h4><Typewriter
+                            {/* <h4><Typewriter
                                     words={["Looking for new connections"]}
                                     loop={1}
                                     cursor
@@ -110,7 +137,8 @@ function About() {
                                     typeSpeed={40}
                                     deleteSpeed={50}
                                     delaySpeed={1000}
-                            /></h4>
+                            /></h4> */}
+                            <h4>Looking for new connections</h4>
                             <p>
                             I’m excited about the future and ready to contribute to a team where I can not only apply what I’ve learned but also pick up new skills along the way. Feel free to contact me if you'd like to chat more about technology, software development, or potential opportunities!
                             </p>

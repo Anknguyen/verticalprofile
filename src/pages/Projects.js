@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
+import { FaAngleDoubleDown } from 'react-icons/fa';
 import '../css/Project.css';
 
 const Projects = () => {
   
   useEffect(() => {
-    const navContainer = document.querySelector('.navContainer');
-    // if (navContainer) {
-    //   navContainer.style.backgroundColor = '#343a40';
-    // }
 
     const projects = document.querySelectorAll('.project');
+    const downArrow = document.querySelector('.downArrow');
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -28,6 +27,28 @@ const Projects = () => {
       observer.observe(project);
     });
 
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercentage = (scrollTop / scrollHeight) * 100;
+
+      if (scrollPercentage > 15) {
+        downArrow.classList.add('hidden');
+      } else {
+        downArrow.classList.remove('hidden');
+      }
+    };
+
+    const handleClick = () => {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight - window.innerHeight,
+        behavior: 'smooth'
+      });
+    };
+
+    downArrow.addEventListener('click', handleClick);
+    window.addEventListener('scroll', handleScroll);
+
     return () => {
       projects.forEach(project => {
         observer.unobserve(project);
@@ -37,40 +58,43 @@ const Projects = () => {
 
   return (
     <div className='projectsContainer'>
+      <button className='downArrow'>
+        <FaAngleDoubleDown />
+      </button>
       <div className='projects'>
-        <div className='project project1 aProject leftSlide'>
+        <a className='project project1 aProject leftSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
-        <div className='project project2b bProject rightSlide'>
+        </a>
+        <a className='project project2b bProject rightSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
-        <div className='project project2 aProject rightSlide'>
+        </a>
+        <a className='project project2 aProject rightSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
-        <div className='project project3b bProject leftSlide'>
+        </a>
+        <a className='project project3b bProject leftSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
-        <div className='project project3 aProject leftSlide'>
+        </a>
+        <a className='project project3 aProject leftSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
-        <div className='project project4b bProject leftSlide'>
+        </a>
+        <a className='project project4b bProject leftSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
-        <div className='project project4 aProject leftSlide'>
+        </a>
+        <a className='project project4 aProject leftSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
-        <div className='project project5b bProject rightSlide'>
+        </a>
+        <a className='project project5b bProject rightSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
-        <div className='project project5 aProject rightSlide'>
+        </a>
+        <a className='project project5 aProject rightSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
-        <div className='project project6b bProject leftSlide'>
+        </a>
+        <a className='project project6b bProject leftSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
-        <div className='project project6 aProject leftSlide'>
+        </a>
+        <a className='project project6 aProject leftSlide'>
           <p className='projectTitle'>Project</p>
-        </div>
+        </a>
         <div className='codeSnippet1'>
           <pre>
             <code>

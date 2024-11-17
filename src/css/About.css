@@ -22,7 +22,6 @@
     width: 50%; /* Take up 60% of the total container */
     display: flex;
     flex-direction: column; /* Make it a flex container with column direction */
-    overflow: visible; /* Allow overflow to be visible */
     position: relative;
     justify-content: center;
     align-items: center;
@@ -58,40 +57,34 @@
 .overflowContainer {
     overflow-y: auto; /* Enable vertical scrolling */
     flex-grow: 1; /* Allow it to grow and take up remaining space */
-    scrollbar-width: thin; /* Make the scrollbar thin for Firefox */
-    scrollbar-color: #3aafa9 transparent; /* Color of the scrollbar thumb and track */
+    scrollbar-width: none; /* Make the scrollbar thin for Firefox */
+    position: relative; /* Establish positioning context */
 }
 
-/* Style the scrollbar for WebKit browsers */
-.overflowContainer::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
+.scroll-bar-container {
+    position: absolute; /* Position the scrollbar absolutely */
+    top: 18%;
+    right: 10px;
+    width: 5px; /* Adjust the width of the vertical bar */
+    height: 70%;
+    background-color: #cdf1f0; /* Adjust the color of the vertical bar */
+    z-index: 9998;
+    border-radius: 5px; /* Adjust the border radius */
 }
 
-.overflowContainer::-webkit-scrollbar-track {
-    background: #def2f1; /* Make the scrollbar track match the theme */
-}
-
-.overflowContainer::-webkit-scrollbar-thumb {
-    background: #3aafa9; /* Color of the scrollbar thumb */
-    border-radius: 6px; /* Rounded corners for the scrollbar thumb */
-}
-
-.overflowContainer::-webkit-scrollbar-thumb:hover {
-    background: #2b7a78; /* Darker color of the scrollbar thumb on hover */
-}
-
-.overflowContainer::-webkit-scrollbar-button {
-    background: #3aafa9; /* Color of the scrollbar buttons */
-    border-radius: 6px; /* Rounded corners for the scrollbar buttons */
-}
-
-.overflowContainer::-webkit-scrollbar-button:vertical:decrement {
-    background: #2b7a78; /* Color of the up button */
-}
-
-.overflowContainer::-webkit-scrollbar-button:vertical:increment {
-    background: #2b7a78; /* Color of the down button */
-}
+.scroll-bar {
+    border-radius: 5px;
+    min-height: 1%;
+    max-height: 70%;
+    position: absolute; /* Position the scrollbar absolutely */
+    top: 18%;
+    right: 10px;
+    width: 5px; /* Adjust the width of the vertical bar */
+    height: 1%;
+    background-color: #3aafa9; /* Adjust the color of the vertical bar */
+    z-index: 9999;
+    transition: height 0.1s ease-out; /* Smooth transition for the height */
+  }
 
 .pictureContainer {
     position: absolute; /* Position the picture container absolutely */

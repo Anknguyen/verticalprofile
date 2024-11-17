@@ -4,36 +4,6 @@ import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence, easeOut } from 'framer-motion';
 
-const menuVariants = {
-    hidden: { 
-        // y: '-100vh',
-        opacity: 0, 
-        transition: {
-            duration: 0.5, 
-            ease: [0.42, 0, 1, 1] // Custom cubic-bezier for ease-in
-        } 
-    },
-    visible: {
-        y: 0,
-        opacity: 1,
-        transition: {
-            duration: 0.5,
-            delay: 0,
-            ease: [0, 0, 0.58, 1], // Custom cubic-bezier for ease-out
-            staggerChildren: 0.15 // Stagger the children animations by 0.1 seconds
-        }
-    },
-    exit: { 
-        // y: '-100vh',
-        opacity: 0, 
-        transition: { 
-            ease: [0.4, 0, 0.2, 1], // Custom cubic-bezier for fast start and slow end
-            duration: .6,
-            delay: 0.15, // Delay the start of the staggered exit animations
-            staggerChildren: 0.15 // Stagger the children animations by 0.2 seconds on exit
-        }
-    }
-};
 
 const childVariants = {
     hidden: {
@@ -56,37 +26,151 @@ const childVariants = {
                 duration: 0.2
             },
             y: {
-                duration: 0.6
+                duration: 0.3
             }
         }
     }
 };
 
+const topBarVariants = {
+    initial: { y: 0 },
+    animate: { 
+        y: 15, 
+        rotate: 45, 
+        transition: { 
+            y: { duration: 0.3 },
+            rotate: { duration: 0.3, delay: 0.3 }
+        } 
+    },
+    reverse: {
+        rotate: 0,
+        y: 0,
+        transition: {
+            rotate: { duration: 0.3 },
+            y: { duration: 0.3, delay: 0.3 }
+        }
+    },
+};
+
+const middleBarVariants = {
+    initial: { opacity: 1 },
+    animate: { opacity: 0, transition: { duration: 0.6 } },
+    reverse: { opacity: 1, transition: { duration: 0.6 } }
+};
+
+const bottomBarVariants = {
+    initial: { y: 0 },
+    animate: { 
+        y: -15, 
+        rotate: -45,
+        transition: { 
+            y: { duration: 0.3 },
+            rotate: { duration: 0.3, delay: 0.3 },
+            
+        } 
+    },
+    reverse: {
+        rotate: 0,
+        y: 0,
+        transition: {
+            rotate: { duration: 0.3 },
+            y: { duration: 0.3, delay: 0.3 }
+        }
+    }
+};
+
 function Navbar({ setHomeKey }) {
-    const navContainer = document.querySelector('.navContainer');
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const [isLinkDisabled, setIsLinkDisabled] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
-    const [colorHome, setColorHome] = useState(false);
-    const [colorAbout, setColorAbout] = useState(false);
-    const [colorContact, setColorContact] = useState(false);
-    const [colorSkills, setColorSkills] = useState(false);
+    const [clipPath, setClipPath] = useState(null);
+    const [exitClipPath, setExitClipPath] = useState(null);
+    const navHomeContainerRef = useRef(null);
     const menuRef = useRef(null);
-    const location = useLocation(); // Use the useLocation hook
+    const location = useLocation();
+
+    const updateClipPath = () => {
+        if (navHomeContainerRef.current) {
+            const rect = navHomeContainerRef.current.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const radius = Math.max(rect.width, rect.height) / 2;
+            console.log(`circle(${radius}px at ${centerX}px ${centerY}px)`);
+            setClipPath(`circle(${radius}px at ${centerX}px ${centerY}px)`);
+            setExitClipPath(`circle(${radius}px at ${centerX}px ${centerY}px)`);
+        }
+    };
+
+    useEffect(() => {
+        updateClipPath();
+        window.addEventListener('resize', updateClipPath);
+        return () => window.removeEventListener('resize', updateClipPath);
+    }, []);
+
+    const menuVariants = {
+        hidden: {
+            clipPath: clipPath,
+            opacity: 1,
+            transition: {
+                duration: 0,
+                ease: 'easeInOut'
+            }
+        },
+        visible: {
+            clipPath: 'circle(150% at 50% 50%)',
+            opacity: 1,
+            transition: {
+                duration: 1.2,
+                ease: 'easeInOut'
+            }
+        },
+        exit: { 
+            clipPath: exitClipPath,
+            opacity: 0, 
+            transition: { 
+                clipPath: {
+                    duration: 1,
+                },
+                opacity: {
+                    duration: .7,
+                    ease: 'easeInOut',
+                    delay: 0.2 //this keeps the opacity from fading as fast
+                },
+                staggerChildren: 0.1
+            }
+        }
+    };
 
     useEffect(() => {
         const navContainer = document.querySelector('.navContainer');
         if (menuVisible) {
             navContainer.style.backgroundColor = "transparent";
+        } else {
+            if (location.pathname === '/' || location.pathname === '/contact') {
+                navContainer.style.backgroundColor = "transparent";
+                navContainer.classList.remove('blurred-nav');
+            } else if (location.pathname === '/projects') {
+                
+            } else {
+                navContainer.style.backgroundColor = 'transparent';
+                navContainer.classList.remove('blurred-nav');
+            }
         }
-    }, [menuVisible]);
+    }, [menuVisible, location.pathname]);
 
     const toggleMenu = () => {
+        if (isButtonDisabled) return;
+
+        updateClipPath(); // Update the clipPath before toggling the menu
+        setMenuVisible(prevMenuVisible => {
+            const newMenuVisible = !prevMenuVisible;
+            return newMenuVisible;
+        });
         setIsButtonDisabled(true);
-        setMenuVisible(!menuVisible);
+
         setTimeout(() => {
-            setIsButtonDisabled(false); // Re-enable the button after 500ms
-        }, 800);
+            setIsButtonDisabled(false);
+        }, 1200); // Adjust the timeout duration to match the animation duration
     };
 
     const handleLinkClick = (path) => {
@@ -111,24 +195,49 @@ function Navbar({ setHomeKey }) {
         <div>
             <div className= 'navContainer'>
                 <div className='navHome'>
-                <button className='navHomeButton' onClick={toggleMenu} disabled={isButtonDisabled}>
-                        {menuVisible ? 'Exit' : 'Menu'}
-                    </button>
+                    <div className='navHomeContainer' ref={navHomeContainerRef}>
+                        <button
+                            className={`navHomeButton ${menuVisible ? 'menuVisible' : 'menuInvisible'}`}
+                            onClick={toggleMenu}
+                            disabled={isButtonDisabled}
+                        >
+                            <motion.div
+                            className="bar topBar"
+                            variants={topBarVariants}
+                            initial="initial"
+                            animate={menuVisible ? 'animate' : 'reverse'}
+                            
+                            />
+                            <motion.div
+                            className="bar"
+                            variants={middleBarVariants}
+                            initial="initial"
+                            animate={menuVisible ? 'animate' : 'reverse'}
+                            
+                            />
+                            <motion.div
+                            className="bar botBar"
+                            variants={bottomBarVariants}
+                            initial="initial"
+                            animate={menuVisible ? 'animate' : 'reverse'}
+                            />
+                        </button>
+                    </div>
                 </div>
                 <div className='middleDiv'>
                 <p className={`navTitle ${menuVisible || isHomePage || isProjectsPage ? 'visible' : ''}`}>An Nguyen</p>
                 </div>
                 <div className="rightDiv">
-                    <a className="rightNavHomeIcon" href="mailto:your-email@example.com"><FaEnvelope /></a>
-                    <a className="rightNavHomeIcon" href="https://github.com/your-username" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-                    <a className="rightNavHomeIcon" href="https://linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+                    <a className="rightNavHomeIcon" href="mailto:akimnguyen1999@gmail.com"><FaEnvelope /></a>
+                    <a className="rightNavHomeIcon" href="https://github.com/Anknguyen" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+                    <a className="rightNavHomeIcon" href="https://linkedin.com/in/aknguyen1999" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
                 </div>
             </div>
 
             <AnimatePresence>
                 {menuVisible && (
                     <motion.div
-                    className={`menuContainer ${colorHome ? 'colorHome' : ''} ${colorAbout ? 'colorAbout' : ''} ${colorContact ? 'colorContact' : ''} ${colorSkills ? 'colorSkills' : ''}`}
+                    className='menuContainer'
                         ref={menuRef}
                         initial="hidden"
                         animate="visible"
@@ -141,8 +250,7 @@ function Navbar({ setHomeKey }) {
                                 className='menuCard menuHome'
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.95 }}
-                                onMouseEnter={() => setColorHome(true)}
-                                onMouseLeave={() => setColorHome(false)}
+                                
                                 style={{ willChange: 'transform, opacity' }}
                             >
                                 <Link to="/" class="no-style" onClick={() => handleLinkClick('/')} disabled={isLinkDisabled}>
@@ -154,8 +262,7 @@ function Navbar({ setHomeKey }) {
                                 className='menuCard menuProjects'
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.95 }}
-                                onMouseEnter={() => setColorAbout(true)}
-                                onMouseLeave={() => setColorAbout(false)}
+                                
                                 style={{ willChange: 'transform, opacity' }}
                             >
                                 <Link to="/projects" class="no-style" onClick={() => handleLinkClick('/projects')} disabled={isLinkDisabled}>
@@ -167,8 +274,7 @@ function Navbar({ setHomeKey }) {
                                 className='menuCard menuContact'
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.95 }}
-                                onMouseEnter={() => setColorContact(true)}
-                                onMouseLeave={() => setColorContact(false)}
+                                
                                 style={{ willChange: 'transform, opacity' }}
                             >
                                 <Link to="/contact" class="no-style" onClick={() => handleLinkClick('/contact')} disabled={isLinkDisabled}>
@@ -180,8 +286,7 @@ function Navbar({ setHomeKey }) {
                                 className='menuCard menuSkills'
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.95 }}
-                                onMouseEnter={() => setColorSkills(true)}
-                                onMouseLeave={() => setColorSkills(false)}
+                                
                                 style={{ willChange: 'transform, opacity' }}
                             >
                                 <Link to="/skills" class="no-style" onClick={() => handleLinkClick('/skills')} disabled={isLinkDisabled}>

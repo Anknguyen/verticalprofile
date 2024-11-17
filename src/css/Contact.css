@@ -1,5 +1,6 @@
-.parentContainer{
-    overflow: hidden;
+.contactBackgroundContainer{
+    height: 100vh;
+    width: 100vw;
     background-color: #2b3d45;
 }
 .contactTitle{
@@ -65,12 +66,12 @@
     font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
 }
 
-.contactContainer input[type="text"]:focus,
+/* .contactContainer input[type="text"]:focus,
 .contactContainer input[type="email"]:focus,
 .contactContainer textarea:focus {
     border-color: black;
     outline: none;
-}
+} */
 
 
 .contactContainer .buttonContainer {
@@ -88,14 +89,14 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 1em;
-    transition: background-color 0.1s;
+    transition: background-color 0.3s;
     font-family: 'Montserrat', sans-serif; /* Apply Montserrat font */
     width: 150px;
     height: 60px;
 }
 
 .contactContainer button[type="submit"]:hover {
-    background-color: white;
+    background-color: lightgray;
     color: black;
 }
 
@@ -118,4 +119,54 @@
 
 .botNavContactIcon svg {
     margin-right: 10px; /* Add space between the icon and the text */
+}
+
+.successMessage, .errorMessage {
+    text-align: center;
+    font-size: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 20px;
+    color: white;
+}
+
+.inputContainer {
+    position: relative;
+    margin-bottom: 15px;
+    overflow: visible;
+    
+}
+
+.floatingLabel {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 25px;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    color: #aaa;
+    z-index: 1; /* Ensure the label appears above the input field */
+}
+
+.inputContainer input,
+.inputContainer textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    z-index: 0; /* Ensure the input field is below the label */
+}
+
+.inputContainer input:focus + .floatingLabel,
+.inputContainer input:not(:placeholder-shown) + .floatingLabel,
+.inputContainer input:valid + .floatingLabel,
+.inputContainer textarea:focus + .floatingLabel,
+.inputContainer textarea:not(:placeholder-shown) + .floatingLabel,
+.inputContainer textarea:valid + .floatingLabel {
+    top: -15px; /* Adjust this value to position the label outside the input field */
+    left: 10px;
+    transform: translateY(-70%); /* Remove the translateY to position it correctly */
+    font-size: 0.9em;
+    color: white;
 }
