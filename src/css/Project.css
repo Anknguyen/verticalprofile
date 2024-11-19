@@ -18,15 +18,11 @@
   color: #94dddb;
   opacity: 0.6;
   font-size: 2em;
-  cursor: pointer;
+  /* cursor: pointer; */
   user-select: none;
   z-index: 20;
   transition: opacity 0.6s;
   animation: bounce 2s infinite;
-}
-
-.downArrow:hover {
-  opacity: 1;
 }
 
 .downArrow.hidden {

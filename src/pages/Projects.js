@@ -41,7 +41,6 @@ const Projects = () => {
       smoothScrollToBot(1000);
     };
 
-    downArrow.addEventListener('click', handleClick);
     window.addEventListener('scroll', handleScroll);
 
     return () => {
