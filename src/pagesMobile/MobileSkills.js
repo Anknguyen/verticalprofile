@@ -1,22 +1,10 @@
 import React from 'react';
-import '../css/Skills.css';
+import '../cssMobile/MobileSkills.css';
 
-const skills = [
-    'JavaScript',
-    'React',
-    'Node.js',
-    'CSS',
-    'HTML',
-    'Git',
-    'SQL',
-    'Python',
-    'Java',
-];
-
-const Skills = () => {
+const MobileSkills = () => {
     return (
-        <div className='backgroundSkills'>
-        <div className='skillsBackgroundContainer'>
+        
+        <div className='skillsBackgroundContainer mobile'>
             <div className='skillsContainer'>
                 <div className='frontendContainer'>
                     <div className='frontendLeft'>Frontend</div>
@@ -87,8 +75,8 @@ const Skills = () => {
                 
             </div>
         </div>
-        </div>
+        
     );
 };
 
-export default Skills;
+export default MobileSkills;

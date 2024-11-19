@@ -1,0 +1,108 @@
+.backgroundSkills{
+    background-color: #71a7a5;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.skillsBackgroundContainer {
+    padding-top: 120px;
+    background-color: #71a7a5;
+    height: 90%;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.frontendLeft, .backendLeft {
+    color: white;
+    font-size: 2em;
+    font-weight: 500;
+    text-align: start;
+    justify-content: start;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    align-items: center;
+    height: auto;
+    border-bottom: white 2px solid;
+}
+
+.skillsContainer {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10vh;
+    height: auto;
+    overflow-y: auto;
+}
+
+.frontendContainer, .backendContainer {
+    width: 100%;
+    display: flex;
+    gap: 60px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.frontend, .backend {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.backend .icon, .frontend .icon {
+    padding: 30px 30px 10px 30px;
+    font-size: 5em;
+    color: white;
+    transition: color 0.3s, background 0.3s, transform 0.4s;
+    user-select: none;
+}
+
+.backend .icon:hover, .frontend .icon:hover {
+    color: #3aafa9;
+    background-color: white;
+    /* transform: translateY(-20px); */
+}
+
+.backend .icon:hover .iconLine, .frontend .icon:hover .iconLine {
+    background-color: #3aafa9;
+    transform: translateY(20px);
+}
+
+.backend .icon:hover .iconName, .frontend .icon:hover .iconName {
+    color: #3aafa9;
+    transform: translateY(-25px);
+}
+
+.iconLine{
+    transition: color 0.3s, background 0.3s, transform 0.3s;
+    margin-top: 15px;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.iconName{
+    user-select: none;
+    transition: color 0.3s, background 0.3s, transform 0.3s;
+    padding-top: 0px;
+    font-size: .2em;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}

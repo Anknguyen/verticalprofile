@@ -1,0 +1,95 @@
+@media (max-width: 768px) {
+    .contactContainer.mobile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: #f9f9f9;
+        min-height: 100vh;
+    }
+
+    .contactTitle {
+        font-size: 2.5rem;
+        color: #333 !important;
+        margin-bottom: 10px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .contactSubtitle {
+        font-size: 1.2rem;
+        color: #666;
+        margin-bottom: 20px;
+        text-align: center;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .contactInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        margin-bottom: 30px;
+        margin-left: 20px;
+    }
+
+    .contactItem {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .contactIcon {
+        font-size: 1.5rem;
+        color: #7cd1ce;
+        margin-right: 10px;
+    }
+
+    .contactLink {
+        font-size: 1.2rem;
+        color: #333;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .contactLink:hover {
+        color: #7cd1ce;
+    }
+
+    .contactForm {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .contactInput, .contactTextarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .contactTextarea {
+        height: 100px;
+        resize: none;
+    }
+
+    .contactButton {
+        align-self: center;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #7cd1ce;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        transition: background-color 0.3s;
+    }
+
+    .contactButton:hover {
+        background-color: #5cb9b6;
+    }
+}

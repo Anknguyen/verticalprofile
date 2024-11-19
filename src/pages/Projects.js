@@ -13,14 +13,12 @@ const Projects = () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('slide-in');
-          // entry.target.classList.remove('slide-out');
         } else {
-          // entry.target.classList.add('slide-out');
           entry.target.classList.remove('slide-in');
         }
       });
     }, {
-      threshold: 0 // Adjust the threshold as needed
+      threshold: 0
     });
 
     projects.forEach(project => {
@@ -40,10 +38,7 @@ const Projects = () => {
     };
 
     const handleClick = () => {
-      window.scrollTo({
-        top: document.documentElement.scrollHeight - window.innerHeight,
-        behavior: 'smooth'
-      });
+      smoothScrollToBot(1000);
     };
 
     downArrow.addEventListener('click', handleClick);
@@ -56,10 +51,34 @@ const Projects = () => {
     };
   }, []);
 
+  const smoothScrollToBot = (duration) => {
+    const start = window.scrollY;
+    const startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
+
+    const documentHeight = Math.max(document.body.scrollHeight);
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+    const destinationOffset = documentHeight;
+    const destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset);
+
+    const scroll = (currentTime) => {
+        const time = Math.min(1, ((currentTime - startTime) / duration));
+        const timeFunction = 1 - Math.pow(1 - time, 3);
+        window.scroll(0, Math.ceil((timeFunction * (destinationOffsetToScroll - start)) + start));
+
+        if (window.scrollY === destinationOffsetToScroll) {
+            return;
+        }
+
+        requestAnimationFrame(scroll);
+    };
+
+    scroll(startTime);
+  };
+
   return (
     <div className='projectsContainer'>
       <button className='downArrow'>
-        <FaAngleDoubleDown />
+        <i class="icon"><FaAngleDoubleDown /></i>
       </button>
       <div className='projects'>
         <a className='project project1 aProject leftSlide'>

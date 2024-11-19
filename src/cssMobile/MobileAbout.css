@@ -1,0 +1,111 @@
+@media (max-width: 768px) {
+    .parentContainer.mobile {
+        height: 100%;
+        display: flex;
+        width: 100vw;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color:azure;
+        position: relative;
+    }
+
+    .aboutContainer.mobile{
+        margin-top: 80px;
+        margin-bottom: 20px;
+        width: 90vw;
+        height: 100%;
+        background-color: #feffff;
+        display: flex;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+        flex-direction: column;
+        align-items: center;
+        position:relative;
+    }
+
+    .aboutTitle.mobile {
+        font-weight: 600;
+        font-size: 3.5rem;
+        margin: 20px;
+        z-index: 10;
+        color: black;
+        font-family: 'Montserrat', sans-serif;
+        position: relative;
+        margin-top: 30vh;
+    }
+
+    .aboutDivider{
+        border-radius: 25px;
+        width: 90%;
+        height: 5px;
+        background-color: #cdf1f0;
+        margin-top: 2vh;
+    }
+
+    .overlayContainerMobile {
+        width: 100%; /* Ensure it takes the full width of the aboutContainer */
+        padding: 25px; /* Add padding for spacing */
+        box-sizing: border-box; /* Include padding in the element's total width and height */
+        word-wrap: break-word; /* Ensure long words break to fit within the container */
+        overflow: hidden; /* Hide any overflow */
+        color: black;
+        height: 100%;
+        margin-bottom: 32vh;
+    }
+
+    .overlayContainerMobile p {
+        font-size: 1.5rem; /* Adjust the font size as needed */
+        line-height: 1.5; /* Adjust the line height as needed */
+        margin-bottom: 20px; /* Add margin between paragraphs */
+    }
+
+    .overlayContainerMobile h4 {
+        font-size: 2rem; /* Adjust the font size as needed */
+        margin-bottom: 10px; /* Add margin between headings and paragraphs */
+    }
+
+    .aboutProjectsButton {
+        border-radius: 25px;
+        position:absolute;
+        bottom: 180px;
+        left: 10%;
+        width: 200px;
+        height: 50px;
+        background-color: #7cd1ce;
+        color: white;
+        font-size: 1.5rem;
+        font-family: 'Montserrat', sans-serif;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.2s;
+    }
+
+    .aboutProjectsButton:hover {
+        background-color: #5cb9b6;
+    }
+}
+
+@media (min-width: 830px) and (max-width: 1024px)
+{
+    .aboutTitle.mobile {
+        font-size: 3rem;
+    }
+
+    .aboutProjectsButton {
+        border-radius: 50px;
+        position:absolute;
+        bottom: 180px;
+        left: 10%;
+        width: 300px;
+        height: 80px;
+        background-color: #7cd1ce;
+        color: white;
+        font-size: 1.5rem;
+        font-family: 'Montserrat', sans-serif;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.2s;
+    }
+}

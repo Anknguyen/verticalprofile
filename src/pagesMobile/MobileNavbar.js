@@ -1,9 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
-import '../css/Navbar.css';
-import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
+import React, { useState, useRef, useEffect } from 'react';
+import '../cssMobile/MobileNavbar.css';
+import { FaEnvelope, FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-
 
 const childVariants = {
     hidden: {
@@ -44,7 +43,7 @@ const childVariants = {
 const topBarVariants = {
     initial: { y: 0 },
     animate: { 
-        y: 15, 
+        y: 11, 
         rotate: 45, 
         transition: { 
             y: { duration: 0.3 },
@@ -70,7 +69,7 @@ const middleBarVariants = {
 const bottomBarVariants = {
     initial: { y: 0 },
     animate: { 
-        y: -15, 
+        y: -11, 
         rotate: -45,
         transition: { 
             y: { duration: 0.3 },
@@ -88,16 +87,48 @@ const bottomBarVariants = {
     }
 };
 
-function Navbar({ setHomeKey }) {
+function MobileNavbar({ setHomeKey }) {
     const [isTitleVisible, setIsTitleVisible] = useState(true);
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
     const [isLinkDisabled, setIsLinkDisabled] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
     const [clipPath, setClipPath] = useState(null);
     const [exitClipPath, setExitClipPath] = useState(null);
+    const [lastScrollTop, setLastScrollTop] = useState(0);
+    const [isNavbarVisible, setIsNavbarVisible] = useState(true);
     const navHomeContainerRef = useRef(null);
     const menuRef = useRef(null);
     const location = useLocation();
+
+    useEffect(() => {
+
+        
+        if (menuVisible) {
+            setIsNavbarVisible(true);
+            return;
+        }
+    
+        const handleScroll = () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const top15Percent = document.documentElement.scrollHeight * 0.05;
+            if (scrollTop <= top15Percent) {
+                // is at the top 15% of the page
+                setIsNavbarVisible(true);
+            } else if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                setIsNavbarVisible(false);
+            } else {
+                // Scrolling up
+                setIsNavbarVisible(true);
+            }
+            setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop); // For Mobile or negative scrolling
+        };
+    
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [lastScrollTop, menuVisible]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -180,23 +211,6 @@ function Navbar({ setHomeKey }) {
         return () => window.removeEventListener('resize', updateClipPath);
     }, []);
 
-    useEffect(() => {
-        const navContainer = document.querySelector('.navContainer');
-        if (menuVisible) {
-            navContainer.style.backgroundColor = "transparent";
-        } else {
-            if (location.pathname === '/' || location.pathname === '/contact') {
-                navContainer.style.backgroundColor = "transparent";
-                navContainer.classList.remove('blurred-nav');
-            } else if (location.pathname === '/projects') {
-                
-            } else {
-                navContainer.style.backgroundColor = 'transparent';
-                navContainer.classList.remove('blurred-nav');
-            }
-        }
-    }, [menuVisible, location.pathname]);
-
     const smoothScrollToTop = (duration) => {
         const start = window.scrollY;
         const startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
@@ -238,10 +252,7 @@ function Navbar({ setHomeKey }) {
     const handleLinkClick = (path) => {
         console.log('handleLinkClick');
         setMenuVisible(false);
-    
-        if (location.pathname === path) {
-            smoothScrollToTop(1200);
-        }
+        window.scrollTo(0, 0);
     };
 
     const isHomePage = location.pathname === '/';
@@ -250,7 +261,7 @@ function Navbar({ setHomeKey }) {
 
     return (
         <div>
-            <div className= 'navContainer'>
+            <div className={`navContainer ${isNavbarVisible ? 'visible' : 'hidden'}`}>
                 <div className='navHome'>
                     <div className='navHomeContainer' ref={navHomeContainerRef}>
                         <button
@@ -282,7 +293,7 @@ function Navbar({ setHomeKey }) {
                     </div>
                 </div>
                 <div className='middleDiv'>
-                    <p className={`navTitle ${(menuVisible || (isTitleVisible && (isHomePage || isProjectsPage || isSkillsPage))) ? 'visible' : ''}`}>An Nguyen</p>
+                    <p className={`navTitle ${(menuVisible || (isTitleVisible && (isHomePage || isProjectsPage || isSkillsPage))) ? 'visible' : 'visible'}`}>An Nguyen</p>
                 </div>
                 <div className="rightDiv">
                     <a className="rightNavHomeIcon" href="mailto:akimnguyen1999@gmail.com"><FaEnvelope /></a>
@@ -358,4 +369,4 @@ function Navbar({ setHomeKey }) {
     );
 }
 
-export default Navbar;
+export default MobileNavbar;

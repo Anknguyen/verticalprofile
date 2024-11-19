@@ -8,11 +8,44 @@
   display: none;
 }
 
-body {
-  overflow-x: hidden;
-  -ms-overflow-style:none;
+html, body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
-/* * {
-  cursor: none !important;
-} */
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    overflow: auto;
+  }
+
+  body {
+    overflow-x: auto;
+  }
+
+  ::-webkit-scrollbar {
+    display: block; /* Chrome, Safari, Opera */
+  }
+
+  ::-webkit-scrollbar-button {
+    display: block;
+  }
+
+  a, button {
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+  }
+}

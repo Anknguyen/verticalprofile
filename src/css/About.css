@@ -25,15 +25,17 @@
     position: relative;
     justify-content: center;
     align-items: center;
+    overflow:hidden;
 }
 
 .aboutContainer {
+    position: relative;
     background-color: #feffff;
     height: 100%; /* Full height of the total container */
     width: 50%; /* Take up 40% of the total container */
     display: flex;
     flex-direction: column; /* Make it a flex container with column direction */
-    overflow: visible; /* Allow overflow to be visible */
+    overflow: hidden; /* Allow overflow to be visible */
 }
 
 .myPicture {
@@ -46,6 +48,7 @@
     min-height: 50%;
     position: relative; /* Use relative positioning */
     overflow: hidden; /* Hide overflow to see the scaled image */
+    z-index: 0;
 }
 
 .myPicture img {
@@ -66,7 +69,7 @@
     top: 18%;
     right: 10px;
     width: 5px; /* Adjust the width of the vertical bar */
-    height: 70%;
+    height: 57%;
     background-color: #cdf1f0; /* Adjust the color of the vertical bar */
     z-index: 9998;
     border-radius: 5px; /* Adjust the border radius */
@@ -75,7 +78,7 @@
 .scroll-bar {
     border-radius: 5px;
     min-height: 1%;
-    max-height: 70%;
+    max-height: 57%;
     position: absolute; /* Position the scrollbar absolutely */
     top: 18%;
     right: 10px;
@@ -85,21 +88,6 @@
     z-index: 9999;
     transition: height 0.1s ease-out; /* Smooth transition for the height */
   }
-
-.pictureContainer {
-    position: absolute; /* Position the picture container absolutely */
-    top: 0; /* Position it at the top of the about container */
-    left: 50%;
-    transform: translate(-50%, -50%); /* Center it horizontally and move it up by 50% of its height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    z-index: 2;
-    width: 150px; /* Set a fixed width */
-    height: 150px; /* Set a fixed height */
-    border-radius: 50%; /* Make it circular */
-}
 
 .textContainer {
     font-size: 18px; /* Set font size for the text */
@@ -120,28 +108,123 @@
 }
 
 .bottomDiv{
-    padding-left: 2vw;
+    margin-left: 80px;
     padding-top: 30px;
     display: flex;
-    justify-content: center; /* Align items to the right */
+    justify-content: start;
     align-items: center;
+    position:relative;
     background-color: transparent;
     color: black;
     font-size: 35px;
     font-weight: 500;
-    cursor: default;
     transition: all 0.2s;
-    height: 120px;
-    gap: 50px;
-    
+    height: 300px;
+    gap: 20px;
 }
 
-.botNavHomeIcon {
+.projectsBtnContainer{
     text-decoration: none;
-    color: #526D82;
-    transition:color 0.35s;
-  }
-  
-  .botNavHomeIcon:hover {
-    color: black; /* Change color on hover */
-  }
+    color: #3aafa9;
+    margin-top: -30px; /* Adjust this value to move the button up */
+}
+
+.projectsBtn {
+    text-align: start;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1em; /* Change font size */
+    background-color: transparent; /* Remove background color */
+    color: inherit; /* Inherit color from parent */
+    border: none; /* Remove border */
+    cursor: pointer; /* Change cursor to pointer */
+    transition: color 0.35s; /* Add transition effect */
+    line-height: 1; /* Adjust line height */
+    margin: 0; /* Remove margin */
+    padding: 10px; /* Adjust padding */
+    position: relative;
+}
+
+.line1 {
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    background-color: #cdf1f0;
+    transition: width 0.5s;
+}
+
+.line2 {
+    border-radius: 5px;
+    position: absolute;
+    bottom: 0;
+    height: 4px;
+    width: 0%;
+    background-color: #3aafa9;
+    transition: width 0.5s;
+}
+
+.projectsBtn:hover .line2 {
+    width: 100%;
+}
+
+.projectsBtn:hover {
+    color: #2c837e;
+}
+
+.blob {
+    position: absolute;
+    background-color: #96dbd9;
+    opacity: 1;
+    clip-path: circle(50% at 50% 50%);
+}
+
+/* Specific styles for each blob to create a cloud pattern */
+.blob1 {
+    width: 200px;
+    height: 200px;
+    bottom: -50px;
+    right: -50px;
+    z-index: 0;
+}
+
+.blob2 {
+    width: 150px;
+    height: 150px;
+    bottom: -30px;
+    right: 100px;
+    z-index: 0;
+}
+
+.blob3 {
+    width: 180px;
+    height: 130px;
+    bottom: -65px;
+    right: 210px;
+    clip-path: ellipse(50% 50% at 70% 50%) !important;
+    z-index: 0;
+}
+
+.blob4 {
+    width: 220px;
+    height: 220px;
+    top: -35px;
+    left: -55px;
+    z-index: 1;
+}
+
+.blob5 {
+    width: 160px;
+    height: 160px;
+    top: -30px;
+    left: 100px;
+    z-index: 1;
+}
+
+.blob6 {
+    width: 160px;
+    height: 160px;
+    top: -70px;
+    left: 180px;
+    z-index: 1;
+}

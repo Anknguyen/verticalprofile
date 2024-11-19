@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { Link, useLocation } from 'react-router-dom';
 import '../css/About.css';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Typewriter } from 'react-simple-typewriter';
@@ -15,7 +16,7 @@ function About() {
           if (overflowRef.current) {
             const scrollTop = overflowRef.current.scrollTop;
             const scrollHeight = overflowRef.current.scrollHeight - overflowRef.current.clientHeight;
-            const scrollPercentage = (scrollTop / scrollHeight) * 70;
+            const scrollPercentage = (scrollTop / scrollHeight) * 57;
             document.querySelector('.scroll-bar').style.height = `${scrollPercentage}%`;
           }
         };
@@ -69,10 +70,15 @@ function About() {
                 >
 
                 <div className='aboutLeftContainer'>
+                    <div className="blob blob4"></div>
+                    <div className="blob blob5"></div>
+                    <div className="blob blob6"></div>
                     <img className='myPicture' src={projectImg1} alt="Project Image" />
                 </div>
                 <div className="aboutContainer">
-                    
+                    <div className="blob blob1"></div>
+                    <div className="blob blob2"></div>
+                    <div className="blob blob3"></div>
                     <div className="headerContainer">
                     <Typewriter
                             words={["Hi! I'm An Nguyen"]}
@@ -145,9 +151,12 @@ function About() {
                         </motion.div>
                     </div>
                     <div className="bottomDiv">
-                        {/* <a className="botNavHomeIcon" href="mailto:your-email@example.com"><FaEnvelope /></a>
-                        <a className="botNavHomeIcon" href="https://github.com/your-username" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-                        <a className="botNavHomeIcon" href="https://linkedin.com/in/your-username" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a> */}
+                        <Link to="/projects" class="projectsBtnContainer">
+                            <button className='projectsBtn'>View projects
+                            <div className='line1'></div>
+                            <div className='line2'></div>
+                            </button>
+                        </Link>              
                     </div>
                 </div>
             </motion.div>

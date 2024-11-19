@@ -1,38 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import AnimatedCursor from 'react-animated-cursor';
+import { useMediaQuery } from 'react-responsive';
 import './App.css';
 import Navbar from './pages/Navbar';
+import MobileNavbar from './pagesMobile/MobileNavbar';
 import About from './pages/About';
 import Projects from './pages/Projects';
 import Skills from './pages/Skills';
 import Contact from './pages/Contact';
+import MobileProjects from './pagesMobile/MobileProjects';
+import MobileAbout from './pagesMobile/MobileAbout';
+import MobileSkills from './pagesMobile/MobileSkills';
+import MobileContact from './pagesMobile/MobileContact';
 
 function App() {
-
   const [homeKey, setHomeKey] = useState(0);
 
+  // Define media queries for mobile and desktop
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
   return (
-    
     <Router>
       <div>
-        {/* <AnimatedCursor
-          innerSize={8}
-          outerSize={35}
-          color="118, 235, 229"
-          outerAlpha={0.3}
-          innerScale={0.8}
-          outerScale={1.8}
-          style={{ zIndex: 999 }}
-        /> */}
-        <Navbar 
-          setHomeKey={setHomeKey}
-        />
+        {isMobile ? <MobileNavbar setHomeKey={setHomeKey} /> : <Navbar setHomeKey={setHomeKey} />}
         <Routes>
-          <Route path="/projects" element={<Projects key={homeKey}/>} />
-          <Route path="/" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="Contact" element={<Contact />} />
+          <Route path="/projects" element={isMobile ? <MobileProjects key={homeKey} /> : <Projects key={homeKey} />} />
+          <Route path="/" element={isMobile ? <MobileAbout /> : <About />} />
+          <Route path="/skills" element={isMobile ? <MobileSkills /> : <Skills />} />
+          <Route path="/contact" element={isMobile ? <MobileContact /> : <Contact />} />
         </Routes>
       </div>
     </Router>

@@ -187,8 +187,8 @@
 .menuCard {
 
     user-select: none;
-    margin-top: 2.5vh;
-    margin-bottom: 2.5vh;
+    /* margin-top: 2.5vh;
+    margin-bottom: 2.5vh; */
     text-decoration: none;
     display: flex;
     width: 100%;
@@ -196,7 +196,8 @@
     flex: 1;
     justify-content: center;
     align-items: center;
-    border-bottom: 3px solid white; /* Add a bottom border */
+    border-bottom: 3px solid white;
+     /* Add a bottom border */
 }
 
 .menuHome {
@@ -210,7 +211,7 @@
 
 .menuHome:hover .menuItem {
     color: black;
-    transform: translateX(-5vw);
+    transform: translateX(-10vw);
 }
 
 .menuHome:hover + .menuContainer {
@@ -227,7 +228,7 @@
 
 .menuProjects:hover .menuItem {
     color: black;
-    transform: translateX(5vw);
+    transform: translateX(10vw);
 }
 
 .menuContact {
@@ -240,7 +241,7 @@
 
 .menuContact:hover .menuItem {
     color: black;
-    transform: translateX(-5vw);
+    transform: translateX(-10vw);
 }
 
 .menuSkills {
@@ -254,7 +255,7 @@
 
 .menuSkills:hover .menuItem {
     color: black;
-    transform: translateX(5vw);
+    transform: translateX(10vw);
 }
 
 .innerMenu {

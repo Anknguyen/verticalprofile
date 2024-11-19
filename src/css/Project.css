@@ -21,8 +21,12 @@
   cursor: pointer;
   user-select: none;
   z-index: 20;
+  transition: opacity 0.6s;
   animation: bounce 2s infinite;
-  transition: opacity 0.4s;
+}
+
+.downArrow:hover {
+  opacity: 1;
 }
 
 .downArrow.hidden {
