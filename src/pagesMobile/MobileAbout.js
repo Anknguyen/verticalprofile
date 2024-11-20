@@ -40,6 +40,7 @@ function MobileAbout() {
                 </div>
 
                 <div className='aboutDivider'></div>
+                <div className='aboutDivider2'></div>
 
                 <div className='overlayContainerMobile'>
                     <motion.h4 initial="hidden" whileInView="visible" variants={variants} viewport={{ once: true }}>

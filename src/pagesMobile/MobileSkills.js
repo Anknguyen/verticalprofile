@@ -4,11 +4,11 @@ import '../cssMobile/MobileSkills.css';
 const MobileSkills = () => {
     return (
         
-        <div className='skillsBackgroundContainer mobile'>
-            <div className='skillsContainer'>
-                <div className='frontendContainer'>
-                    <div className='frontendLeft'>Frontend</div>
-                    <div className='frontend'>
+        
+            <div className='skillsContainerMobile'>
+                <div className='frontendContainerMobile'>
+                    <div className='frontendTitle'>Frontend</div>
+                    <div className='frontend mobile'>
                         <i className="devicon-css3-plain icon"> 
                             <div className='iconLine'></div> 
                             <p className='iconName'>CSS</p> 
@@ -31,9 +31,9 @@ const MobileSkills = () => {
                         </i>
                     </div>
                 </div>
-                <div className='backendContainer'>
-                    <div className='backendLeft'>Backend</div>
-                    <div className='backend'>
+                <div className='backendContainerMobile'>
+                    <div className='backendTitle'>Backend</div>
+                    <div className='backend mobile'>
                         <i className="devicon-javascript-plain icon"> 
                             <div className='iconLine'></div> 
                             <p className='iconName'>JavaScript</p> 
@@ -74,7 +74,7 @@ const MobileSkills = () => {
                 </div>
                 
             </div>
-        </div>
+        
         
     );
 };

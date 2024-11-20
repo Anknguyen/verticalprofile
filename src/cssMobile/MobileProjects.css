@@ -1,10 +1,30 @@
 @media (max-width: 768px) {
+
+    .projectOverlayMobile{
+      margin-top: 30px;
+      position:relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ecfffe;
+    }
+
+    .projectsTitle{
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: #179e9c;
+      margin-top: 5vh;
+      margin-bottom: 5vh;
+      font-family: 'Montserrat', sans-serif;
+      background-color: transparent;
+    }
+
     .projectsBackgroundMobile {
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: #343a40;
-      width: 100vw;
+      background-color: #ecfffe;
+      width: 90vw;
       padding-top: 50px;
       position: relative;
       overflow: hidden;
@@ -50,78 +70,59 @@
       }
     }
   
-    .projectsMobileContainer {
+    .PMContainer{
+      padding-top: 30px;
+      width: 90vw;
+      height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100vw;
-      padding-top: 20px;
+      justify-content: center;
+      background-color: #68b9b7;
+      border-radius: 25px;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+      overflow:hidden;
+      position:relative;
     }
   
     .projectMobile {
+      border-radius: 15px;
       cursor: pointer;
-      padding: 20px;
+      padding: 0px;
       margin: 10px 0;
       border: none;
       font-size: 1.2em;
-      background-color: #65cac5;
       color: white;
-      width: 85vw;
-      height: 20vh;
+      width: 70vw;
+      height: 30vh;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: transform 0.65s ease, opacity 0.5s ease, box-shadow 0.5s ease, background-color 0.6s ease;
       position: relative;
       left: 0;
+      background-color: white;
       z-index: 1;
-      border-radius: 20px 20px 20px 20px;
-    }
-  
-    .projectMobile:nth-child(odd) {
-      transform: translateX(-50%);
-    }
-  
-    .projectMobile:nth-child(even) {
-      transform: translateX(50%);
-    }
-
-    .projectMobile:nth-child(odd).slide-in {
-      transform: translateX(-30%);
-    }
-  
-    .projectMobile:nth-child(even).slide-in {
-      transform: translateX(30%);
-    }
-  
-    .projectMobile.centered {
-      background-color: #3db4b0;
-      transform: translateX(0) !important;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
     }
   
     .projectTitle {
       user-select: none;
-      color: white;
+      color: black;
       font-family: 'Montserrat', sans-serif;
       font-size: 1.5em;
       font-weight: 500;
     }
-  
-    .projectMobile.hidden {
-      opacity: 0;
-      transform: translateY(30%);
-    }
+
 
     .codeSnippetM1, .codeSnippetM2, .codeSnippetM3 {
         font-size: 1.5rem;
         background-color: transparent;
-        color: #f8f8f2;
+        color: white;
         padding: 20px;
         border-radius: 8px;
         font-family: 'Courier New', Courier, monospace;
-        opacity: 0.13;
+        opacity: .25;
         user-select: none;
         overflow: hidden;
       }
@@ -129,5 +130,70 @@
     .codeSnippetMobile{
         position:absolute;
         height:  100%;
+        z-index: 0;
+    }
+
+    .toggleBar {
+      margin-bottom: 30px;
+      width: 70vw; /* Adjust the width as needed */
+      height: 30px; /* Adjust the height as needed */
+      background-color: #178f8f; /* Adjust the background color as needed */
+      border-radius: 15px; /* Make it rounded */
+      position: relative;
+      cursor: pointer;
+      z-index: 1;
+    }
+    
+    .toggleCircle {
+      width: 35vw; /* Half the width of the bar */
+      height: 30px; /* Adjust the height as needed */
+      background-color: #49d3d3; /* Adjust the background color as needed */
+      border-radius: 15px; /* Keep the edges rounded */
+      position: absolute;
+      top: 0;
+    }
+
+    .leftToggle
+    {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+      background-color: transparent;
+      border-radius: 15px 0 0 15px;
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 500;
+      position:absolute;
+      left: 0;
+      top:0;
+      font-family : 'Montserrat', sans-serif;
+      opacity: 0.7;
+      z-index: 3;
+    }
+
+    .rightToggle
+    {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+      background-color:transparent;
+      border-radius: 0 15px 15px 0;
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 500;
+      position:absolute;
+      right: 0;
+      top:0;
+      font-family : 'Montserrat', sans-serif;
+      opacity: 0.7;
+      z-index: 3;
+    }
+
+    .shown {
+      opacity: 1;
     }
   }

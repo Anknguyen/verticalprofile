@@ -151,12 +151,11 @@ function About() {
                         </motion.div>
                     </div>
                     <div className="bottomDiv">
-                        <Link to="/projects" class="projectsBtnContainer">
-                            <button className='projectsBtn'>View projects
-                            <div className='line1'></div>
-                            <div className='line2'></div>
-                            </button>
-                        </Link>              
+                    <Link to='/projects'>
+                        <button className='aboutProjectsButton'>
+                            View Projects
+                        </button>
+                    </Link>              
                     </div>
                 </div>
             </motion.div>

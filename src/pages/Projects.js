@@ -80,6 +80,9 @@ const Projects = () => {
         <i class="icon"><FaAngleDoubleDown /></i>
       </button>
       <div className='projects'>
+        <a className='project project1b bProject leftSlide'>
+          <p className='projectTitle'>Project</p>
+        </a>
         <a className='project project1 aProject leftSlide'>
           <p className='projectTitle'>Project</p>
         </a>

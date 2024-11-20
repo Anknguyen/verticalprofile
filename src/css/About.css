@@ -228,3 +228,43 @@
     left: 180px;
     z-index: 1;
 }
+
+.aboutProjectsButton {
+    border-radius: 25px;
+    position: absolute;
+    bottom: 50px;
+    left: 0%;
+    width: 200px;
+    height: 50px;
+    background-color: #69c2bf;
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    overflow: hidden; /* Ensure the pseudo-element is contained within the button */
+    transition: color 0.2s; /* Transition for text color */
+    z-index: 1;
+}
+
+.aboutProjectsButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #47b9b6;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: -1; /* Ensure the pseudo-element is behind the text */
+}
+
+.aboutProjectsButton:hover::before {
+    transform: translateX(0);
+}
+
+.aboutProjectsButton:hover {
+    color: white; /* Ensure text color remains white on hover */
+}

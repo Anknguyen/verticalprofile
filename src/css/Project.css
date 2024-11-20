@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
-  background-color: #343a40;
+  background-color: #30928d;
   width: 100vw;
 }
 
@@ -24,6 +24,7 @@
   transition: opacity 0.6s;
   animation: bounce 2s infinite;
 }
+
 
 .downArrow.hidden {
   opacity: 0;
@@ -47,13 +48,14 @@
   flex-direction: column;
   padding-top: 120px;
   height: 170vh; /* Full height of the viewport */
-  background-color: #343a40;
+  background-color: #30928d;
   width: 100vw;
   position: relative;
   transition: width 0.5s ease;
 }
 
 .project {
+  border-radius: 25px;
   cursor: pointer;
   padding: 20px 30px;
   border: none;
@@ -73,20 +75,14 @@
   margin-bottom: 20px;
 }
 
-.project1:hover {
-  transform: scale(1.1) !important; 
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2) !important; 
-  z-index: 6 !important;
-}
-
-.project2b:hover, .project3b:hover, .project4b:hover, .project5b:hover, .project6b:hover {
+.project1b:hover, .project2b:hover, .project3b:hover, .project4b:hover, .project5b:hover, .project6b:hover {
   transform: scale(1.1) !important; 
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2) !important; 
   opacity: 1 !important;
   z-index: 6 !important;
 }
 
-.project3b:hover + .project3, .project4b:hover + .project4, .project6b:hover + .project6 {
+.project1b:hover + .project1, .project3b:hover + .project3, .project4b:hover + .project4, .project6b:hover + .project6 {
   transform: translateX(5%) scale(1.1);
 }
 
@@ -95,20 +91,41 @@
 }
 
 .project1 {
-  background-color: #2b7a78;
+  background: linear-gradient(45deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 40vw;
   max-width: 800px;
   height: 40vh;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 2;
+  position: absolute; /* Position project2 absolutely */
+  top: 13vh; /* Adjust the top value to overlap project1 */
+  left: 1vw; /* Position it on the right side */
+}
+
+.project1b {
+  background: linear-gradient(125deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
+  color: white;
+  width: 40vw;
+  max-width: 800px;
+  height: 40vh;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  position: absolute; /* Position project2 absolutely */
+  top: 13vh; /* Adjust the top value to overlap project1 */
+  left: 1vw; /* Position it on the right side */
+  z-index: 5;
+  opacity: 0;
 }
 
 .project2 {
-  background-size: cover; /* Ensure the image covers the entire element */
-  background-position: center; /* Center the image */
-  
-  background-color: #047470;
+  background: linear-gradient(150deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 70vw;
   max-width: 1200px;
@@ -116,14 +133,13 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute; /* Position project2 absolutely */
   top: 20vh; /* Adjust the top value to overlap project1 */
-  right: 0; /* Position it on the right side */
+  right: 1vw; /* Position it on the right side */
 }
 
 .project2b {
-  background-size: cover; /* Ensure the image covers the entire element */
-  background-position: center; /* Center the image */
-  
-  background-color: #047470;
+  background: linear-gradient(280deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 70vw;
   max-width: 1200px;
@@ -131,16 +147,15 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute; /* Position project2 absolutely */
   top: 20vh; /* Adjust the top value to overlap project1 */
-  right: 0; /* Position it on the right side */
+  right: 1vw; /* Position it on the right side */
   z-index: 5;
   opacity: 0;
 }
 
 .project3 {
-  background-size: cover; /* Ensure the image covers the entire element */
-  background-position: center; /* Center the image */
-  
-  background-color: rgb(10, 63, 63);
+  background: linear-gradient(75deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 65vw;
   max-width: 1000px;
@@ -148,14 +163,13 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute; /* Position project3 absolutely */
   top: 65vh; /* Position it below project2 */
-  left: 0; /* Position it on the left side */
+  left: 1vw; /* Position it on the left side */
 }
 
 .project3b {
-  background-size: cover; /* Ensure the image covers the entire element */
-  background-position: center; /* Center the image */
-  
-  background-color: rgb(10, 63, 63);
+  background: linear-gradient(25deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 65vw;
   max-width: 1000px;
@@ -163,13 +177,15 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute; /* Position project3 absolutely */
   top: 65vh; /* Position it below project2 */
-  left: 0; /* Position it on the left side */
+  left: 1vw; /* Position it on the left side */
   z-index: 5;
   opacity: 0;
 }
 
 .project4 {
-  background-color: rgb(145, 145, 145);
+  background: linear-gradient(25deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 40vw;
   max-width: 700px;
@@ -177,11 +193,13 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute; /* Position project3 absolutely */
   top: 102vh; /* Position it below project2 */
-  left: 0; /* Position it on the left side */
+  left: 1vw; /* Position it on the left side */
 }
 
 .project4b {
-  background-color: rgb(145, 145, 145);
+  background: linear-gradient(85deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 40vw;
   max-width: 700px;
@@ -189,13 +207,15 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute; /* Position project3 absolutely */
   top: 102vh; /* Position it below project2 */
-  left: 0; /* Position it on the left side */
+  left: 1vw; /* Position it on the left side */
   z-index: 5;
   opacity: 0;
 }
 
 .project5 {
-  background-color: rgb(53, 80, 80);
+  background: linear-gradient(15deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 55vw;
   max-width: 900px;
@@ -203,11 +223,13 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute; /* Position project3 absolutely */
   top: 110vh; /* Position it below project2 */
-  right: 0; /* Position it on the left side */
+  right: 1vw; /* Position it on the left side */
 }
 
 .project5b {
-  background-color: rgb(53, 80, 80);
+  background: linear-gradient(45deg, #bbe7e5, #69c2bf);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 55vw;
   max-width: 900px;
@@ -215,13 +237,15 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute; /* Position project3 absolutely */
   top: 110vh; /* Position it below project2 */
-  right: 0; /* Position it on the left side */
+  right: 1vw; /* Position it on the left side */
   z-index: 5;
   opacity: 0;
 }
 
 .project6 {
-  background-color: rgb(5, 119, 119);
+  background: linear-gradient(10deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 60vw;
   max-width: 850px;
@@ -229,11 +253,13 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute; /* Position project3 absolutely */
   top: 140vh; /* Position it below project2 */
-  left: 0; /* Position it on the left side */
+  left: 1vw; /* Position it on the left side */
 }
 
 .project6b {
-  background-color: rgb(5, 119, 119);
+  background: linear-gradient(-10deg, #69c2bf, #cdf1f0);
+  background-size: 100% 100%;
+  background-position: center;
   color: white;
   width: 60vw;
   max-width: 850px;
@@ -241,7 +267,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: absolute; /* Position project3 absolutely */
   top: 140vh; /* Position it below project2 */
-  left: 0; /* Position it on the left side */
+  left: 1vw; /* Position it on the left side */
   z-index: 5;
   opacity: 0;
 }

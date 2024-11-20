@@ -1,131 +1,86 @@
-import React, { useEffect } from 'react';
-import { FaAngleDoubleDown } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import '../cssMobile/MobileProjects.css';
 
+
+const circleVariants = {
+  left: { x: 0 },
+  right: { x: 'calc(70vw -  35vw)' }, // Adjust the value based on your design
+};
+
+const variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  exit: { opacity: 0, y:-50, transition: { duration: 0.6 } }
+};
+
 const MobileProjects = () => {
-  
-    useEffect(() => {
-  
-      const projects = document.querySelectorAll('.projectMobile');
-      const downArrow = document.querySelector('.downArrow');
-  
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('slide-in');
-          } else {
-            entry.target.classList.remove('slide-in');
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
-  
-      projects.forEach(project => {
-        observer.observe(project);
-        project.addEventListener('click', (e) => {
-          e.stopPropagation(); // Prevent the click event from bubbling up to the document
-          projects.forEach(p => p.classList.remove('centered'));
-          project.classList.add('centered');
-        });
-      });
-  
-      const handleScroll = () => {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercentage = (scrollTop / scrollHeight) * 100;
-  
-        if (scrollPercentage > 15) {
-          downArrow.classList.add('hidden');
-        } else {
-          downArrow.classList.remove('hidden');
-        }
-      };
-  
-      const handleClick = () => {
-        smoothScrollToBot(1000);
-      };
-  
-      const handleDocumentClick = () => {
-        projects.forEach(p => p.classList.remove('centered'));
-      };
-  
-      downArrow.addEventListener('click', handleClick);
-      window.addEventListener('scroll', handleScroll);
-      document.addEventListener('click', handleDocumentClick);
-  
-      return () => {
-        projects.forEach(project => {
-          observer.unobserve(project);
-          project.removeEventListener('click', (e) => {
-            e.stopPropagation();
-            projects.forEach(p => p.classList.remove('centered'));
-            project.classList.add('centered');
-          });
-        });
-        document.removeEventListener('click', handleDocumentClick);
-      };
-    }, []);
-  
-    const smoothScrollToBot = (duration) => {
-      const start = window.scrollY;
-      const startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
-  
-      const documentHeight = Math.max(document.body.scrollHeight);
-      const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-      const destinationOffset = documentHeight;
-      const destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ? documentHeight - windowHeight : destinationOffset);
-  
-      const scroll = (currentTime) => {
-          const time = Math.min(1, ((currentTime - startTime) / duration));
-          const timeFunction = 1 - Math.pow(1 - time, 3);
-          window.scroll(0, Math.ceil((timeFunction * (destinationOffsetToScroll - start)) + start));
-  
-          if (window.scrollY === destinationOffsetToScroll) {
-              return;
-          }
-  
-          requestAnimationFrame(scroll);
-      };
-  
-      scroll(startTime);
+  const [isToggled, setIsToggled] = useState(false);
+  const [projects, setProjects] = useState([]);
+
+  const buttonToggle = () => {
+    setIsToggled(!isToggled);
+  };
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const type = isToggled ? 'app' : 'web';
+      console.log(type);
+      const response = await fetch('http://localhost:3001/api/' + type);
+
+      const data = await response.json();
+      setProjects(data);
     };
+
+    fetchProjects();
+  }, [isToggled]);
   
     return (
+      <div className='projectOverlayMobile'>
       <div className='projectsBackgroundMobile'>
-        <button className='downArrow'>
-          <i className="icon"><FaAngleDoubleDown /></i>
-        </button>
-        <div className='projectsMobileContainer'>
-          <a className='projectMobile'>
-            <p className='projectTitle'>Project</p>
-          </a>
-          <a className='projectMobile'>
-            <p className='projectTitle'>Project</p>
-          </a>
-          <a className='projectMobile'>
-            <p className='projectTitle'>Project</p>
-          </a>
-          <a className='projectMobile'>
-            <p className='projectTitle'>Project</p>
-          </a>
-          <a className='projectMobile'>
-            <p className='projectTitle'>Project</p>
-          </a>
-          <a className='projectMobile'>
-            <p className='projectTitle'>Project</p>
-          </a>
-        </div>
-        <div className='codeSnippetMobile'>
+        <div className='projectsTitle'> Projects </div>
+        <div className='PMContainer'>
+          <div className='toggleBar' onClick={buttonToggle}>
+            <div className={`leftToggle ${!isToggled ? 'shown' : ''}`}>
+              Websites
+            </div>
+            <div className={`rightToggle ${isToggled ? 'shown' : ''}`}>
+              Apps
+            </div>
+            <motion.div
+              className='toggleCircle'
+              animate={isToggled ? 'right' : 'left'}
+              variants={circleVariants}
+              transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            />
+          </div>
+          {projects.map((project, index) => {
+            console.log('Project:', project); // Log the entire project object
+            return (
+              <motion.a
+                key={`${project.id}-${isToggled}`} // Change key to trigger re-render
+                className='projectMobile'
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={variants}
+              >
+                <p className='projectTitle'>{project.name}</p>
+              </motion.a>
+            );
+          })}
+          
+
+          <div className='codeSnippetMobile'>
         <div className='codeSnippetM1'>
         <pre>
           <code>
-                    {`function greetUser(name) {
-                                if (name === 'An') {
-                                    return 'Hello, An!';
-                                }
-                                return 'Hello stranger!';
-                                }
+            {`function greetUser(name) {
+                        if (name === 'An') {
+                            return 'Hello, An!';
+                        }
+                        return 'Hello stranger!';
+                        }
 
                 function reverseString(str) {
                 return str.split('').reverse().join('');
@@ -194,7 +149,8 @@ function binarySearch(arr, target) {
       </div>
 
         </div>
-        
+        </div>
+      </div>
     </div>
   );
 };
