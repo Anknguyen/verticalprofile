@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import '../cssMobile/MobileAbout.css'; // Ensure this file includes the blob styles
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Typewriter } from 'react-simple-typewriter';
-import projectImg1 from '../img/projectImg1.jpg';
 
 function MobileAbout() {
 

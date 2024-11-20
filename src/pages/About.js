@@ -5,7 +5,6 @@ import { Link, useLocation } from 'react-router-dom';
 import '../css/About.css';
 import { FaEnvelope, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Typewriter } from 'react-simple-typewriter';
-import projectImg1 from '../img/projectImg1.jpg';
 
 function About() {
 
@@ -73,7 +72,7 @@ function About() {
                     <div className="blob blob4"></div>
                     <div className="blob blob5"></div>
                     <div className="blob blob6"></div>
-                    <img className='myPicture' src={projectImg1} alt="Project Image" />
+                    <img className='myPicture' src={`${process.env.PUBLIC_URL}/img/projectImg1.jpg`} alt="Project Image" />
                 </div>
                 <div className="aboutContainer">
                     <div className="blob blob1"></div>
