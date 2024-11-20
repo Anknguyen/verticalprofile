@@ -261,7 +261,7 @@ function MobileNavbar({ setHomeKey }) {
 
     return (
         <div>
-            <div className={`navContainer ${isNavbarVisible ? 'visible' : 'hidden'}`}>
+            <div className={`navContainerMobile ${isNavbarVisible ? 'visible' : 'hidden'} ${menuVisible ? '' : 'boxShadow'}`}>
                 <div className='navHome'>
                     <div className='navHomeContainer' ref={navHomeContainerRef}>
                         <button

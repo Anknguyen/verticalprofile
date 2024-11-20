@@ -1,5 +1,5 @@
 @media (max-width: 768px) {
-    .navContainer {
+    .navContainerMobile {
         display: flex;
         justify-content: space-between; /* Ensure space between nav items and rightDiv */
         align-items: stretch; /* Stretch items to take full height */
@@ -9,15 +9,26 @@
         top: 0; /* Position it at the top */
         left: 0; /* Position it at the left edge */
         z-index: 1000;
-        
         backdrop-filter: blur(7px); /* Add a blur effect to the background */
         background-color: rgba(44, 206, 200, 1);
-        transition: background-color 0.8s; /* Smooth transition for background color */
+        transition: background-color 0.8s, box-shadow 0.8s, top 0.35s;
     }
 
-    .navContainer.colored {
-        background-color: #7cd1ce;
+    .navContainerMobile.hidden {
+        top: -60px;
     }
+    
+    .navContainerMobile.visible {
+        top: 0;
+    }
+
+    .navContainerMobile.boxShadow{
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* .navContainer.colored {
+        background-color: #7cd1ce;
+    } */
 
     .navHome {
         width: 60px; /* Reduced width for mobile */
@@ -237,17 +248,5 @@
         justify-content: center;
         align-items: center;
         height: 100vh;
-    }
-
-    .navContainer {
-        transition: top 0.35s;
-    }
-    
-    .navContainer.hidden {
-        top: -60px; /* Adjust based on your navbar height */
-    }
-    
-    .navContainer.visible {
-        top: 0;
     }
 }

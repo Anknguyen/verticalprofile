@@ -93,11 +93,6 @@
   overflow:hidden;
 }
 
-.projectTitle:hover
-    {
-      background-color: #178f8f;
-    }
-
 .project1b:hover, .project2b:hover, .project3b:hover, .project4b:hover, .project5b:hover, .project6b:hover {
   transform: scale(1.1) !important; 
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2) !important; 
