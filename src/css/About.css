@@ -4,6 +4,7 @@
     height: 100vh; /* Full height of the viewport */
     background: linear-gradient(128deg, #3aafa9 80%, #def2f1 80.1%); /* Adjust the gradient stops */
     position: relative; /* Ensure the parent container has a positioning context */
+    
 }
 
 .totalContainer {

@@ -9,7 +9,7 @@ const circleVariants = {
 };
 
 const variants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: .2, y: 50 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
   exit: { opacity: 0, y:-50, transition: { duration: 0.6 } }
 };
@@ -27,7 +27,6 @@ const MobileProjects = () => {
       const type = isToggled ? 'app' : 'web';
       console.log(type);
       const response = await fetch('http://localhost:3001/api/' + type);
-
       const data = await response.json();
       setProjects(data);
     };
@@ -38,8 +37,9 @@ const MobileProjects = () => {
     return (
       <div className='projectOverlayMobile'>
       <div className='projectsBackgroundMobile'>
-        <div className='projectsTitle'> Projects </div>
+        
         <div className='PMContainer'>
+        <div className='projectsTitle'> Projects </div>
           <div className='toggleBar' onClick={buttonToggle}>
             <div className={`leftToggle ${!isToggled ? 'shown' : ''}`}>
               Websites
@@ -54,8 +54,10 @@ const MobileProjects = () => {
               transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             />
           </div>
-          {projects.map((project, index) => {
-            console.log('Project:', project); // Log the entire project object
+          {projects.map((project) => {
+            console.log('Project:', project);
+            const imagePath = `${process.env.PUBLIC_URL}/img/${project.image}`;
+            console.log('Img:', imagePath);
             return (
               <motion.a
                 key={`${project.id}-${isToggled}`} // Change key to trigger re-render
@@ -64,8 +66,9 @@ const MobileProjects = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={variants}
+                style={{ backgroundImage: `url(${imagePath})` }}
               >
-                <p className='projectTitle'>{project.name}</p>
+                <button className='projectTitle'>{project.name}</button>
               </motion.a>
             );
           })}

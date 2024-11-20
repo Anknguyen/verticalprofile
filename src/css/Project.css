@@ -67,13 +67,36 @@
 }
 
 .projectTitle {
-  user-select: none;
   color: white;
   font-family: 'Montserrat', sans-serif;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 500;
-  margin-bottom: 20px;
+  min-width: 30vw;
+  max-width: auto;
+  min-height: 10%;
+  max-height: auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+  padding: 8px 20px;
+  position: absolute;
+  bottom: 0;
+  border-radius: 35px;
+  z-index: 1; /* Ensure the text is above the pseudo-element */
+  background-color: #32c0c0;
+  border: none;
+  transition: background-color 0.3s;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display:flex;
+  white-space:normal;
+  word-wrap: break-word;
+  overflow:hidden;
 }
+
+.projectTitle:hover
+    {
+      background-color: #178f8f;
+    }
 
 .project1b:hover, .project2b:hover, .project3b:hover, .project4b:hover, .project5b:hover, .project6b:hover {
   transform: scale(1.1) !important; 
@@ -91,8 +114,7 @@
 }
 
 .project1 {
-  background: linear-gradient(45deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/websiteimg1.jpg');
   background-position: center;
   color: white;
   width: 40vw;
@@ -106,8 +128,7 @@
 }
 
 .project1b {
-  background: linear-gradient(125deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/websiteimg1.jpg');
   background-position: center;
   color: white;
   width: 40vw;
@@ -123,8 +144,7 @@
 }
 
 .project2 {
-  background: linear-gradient(150deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/websiteimg2.jpg');
   background-position: center;
   color: white;
   width: 70vw;
@@ -137,8 +157,7 @@
 }
 
 .project2b {
-  background: linear-gradient(280deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/websiteimg2.jpg');
   background-position: center;
   color: white;
   width: 70vw;
@@ -153,8 +172,7 @@
 }
 
 .project3 {
-  background: linear-gradient(75deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/coffeelaptop3.jpg');
   background-position: center;
   color: white;
   width: 65vw;
@@ -167,8 +185,7 @@
 }
 
 .project3b {
-  background: linear-gradient(25deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/coffeelaptop3.jpg');
   background-position: center;
   color: white;
   width: 65vw;
@@ -183,8 +200,7 @@
 }
 
 .project4 {
-  background: linear-gradient(25deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/websiteimg2.jpg');
   background-position: center;
   color: white;
   width: 40vw;
@@ -197,8 +213,7 @@
 }
 
 .project4b {
-  background: linear-gradient(85deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/websiteimg2.jpg');
   background-position: center;
   color: white;
   width: 40vw;
@@ -213,8 +228,7 @@
 }
 
 .project5 {
-  background: linear-gradient(15deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/websiteimg1.jpg');
   background-position: center;
   color: white;
   width: 55vw;
@@ -227,8 +241,7 @@
 }
 
 .project5b {
-  background: linear-gradient(45deg, #bbe7e5, #69c2bf);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/websiteimg1.jpg');
   background-position: center;
   color: white;
   width: 55vw;
@@ -243,8 +256,7 @@
 }
 
 .project6 {
-  background: linear-gradient(10deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/coffeelaptop3.jpg');
   background-position: center;
   color: white;
   width: 60vw;
@@ -257,8 +269,7 @@
 }
 
 .project6b {
-  background: linear-gradient(-10deg, #69c2bf, #cdf1f0);
-  background-size: 100% 100%;
+  background-image: url('../../public/img/coffeelaptop3.jpg');
   background-position: center;
   color: white;
   width: 60vw;

@@ -39,7 +39,7 @@ const MobileContact = () => {
         <div className='contactPageMobile'>
         <div className="contactContainer mobile">
           <h1 className="contactTitle">Contact Me</h1>
-          <p className="contactSubtitle">I'd love to hear from you! Feel free to reach out using any of the methods below.</p>
+          <p className="contactSubtitle">I'd love to hear from you! Feel free to reach out.</p>
           <form className="contactForm" onSubmit={handleSubmit}>
             <input
               type="text"
@@ -61,7 +61,7 @@ const MobileContact = () => {
             />
             <textarea
               name="message"
-              placeholder="Your Message"
+              placeholder="Message"
               className="contactTextarea"
               value={formData.message}
               onChange={handleChange}
@@ -70,7 +70,7 @@ const MobileContact = () => {
             <button type="submit" className="contactButton">Send Message</button>
           </form>
         </div>
-        <div className="contactInfo">
+        {/* <div className="contactInfo">
             <div className="contactItem">
                 <FaEnvelope className="contactIcon" />
                 <a href="mailto:akimnguyen1999@gmail.com" className="contactLink">akimnguyen1999@gmail.com</a>
@@ -87,7 +87,7 @@ const MobileContact = () => {
                 <FaGithub className="contactIcon" />
                 <a href="https://github.com/your-profile" className="contactLink" target="_blank" rel="noopener noreferrer">GitHub</a>
             </div>
-        </div>
+        </div> */}
     </div>
     );
 };
